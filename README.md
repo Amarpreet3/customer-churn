@@ -25,6 +25,7 @@ Two types of predictive models were used:
 2. Naïve Bayes
    - Best accuracy: 84.79%
    - Implemented in SAS
+![image](https://github.com/Amarpreet3/customer-churn/assets/96805692/ab97085f-4a1d-4a4a-a152-be4645ed3afb)
 
 ## Key Findings
 
