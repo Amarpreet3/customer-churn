@@ -8,12 +8,6 @@ This repository contains the churn prediction analysis for a telecom company. Th
 
 The dataset includes various customer attributes such as daily usage, service calls, and plan subscriptions, which are used to predict churn likelihood.
 
-## Files Description
-
-- `data_preparation.ipynb` - Jupyter notebook for data cleaning and preparation.
-- `decision_tree_model.ipynb` - Implementation of the Decision Tree model in Python.
-- `naive_bayes_model.ipynb` - Implementation of the Naïve Bayes model in SAS.
-- `model_comparison.ipynb` - Comparison of models to evaluate performance.
 
 ## Models
 
