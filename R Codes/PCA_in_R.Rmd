@@ -1,0 +1,45 @@
+---
+title: "PCA in R"
+output: html_document
+---
+
+```{r}
+iris<-iris[,1:4]
+```
+
+```{r}
+head(iris)
+```
+
+```{r}
+cor(iris)
+```
+
+```{r}
+pc_iris<-princomp(iris,cor=TRUE, score=TRUE)
+```
+
+```{r}
+summary(pc_iris)
+```
+
+```{r}
+plot(pc_iris)
+```
+
+```{r}
+screeplot(pc_iris,type="line",,main="Scree Plot")
+```
+
+```{r}
+pc_iris$loadings
+```
+Comp 1=0.521*Sepal.Length-0.269*Sepal.Width+0.580*Petal.Length+0.565*Petal.Width   
+
+Comp 2=-0.377*Sepal.Length-0.923*Sepal.Width
+
+
+```{r}
+pc_iris_scores<-pc_iris$scores
+head(pc_iris_scores)
+```
