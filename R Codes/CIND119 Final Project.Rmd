@@ -1,0 +1,75 @@
+---
+title: "Lab 8"
+author: "Eric Ding"
+date: "2023-03-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## CIND 119 Part I Data Preparation 
+
+1. Apply PCA on the independent variables (first four columns) of the iris dataset by using prcomp function from stats library.
+```{r}
+#load data set
+churn = read.csv(file="churn.csv", header=TRUE, sep=",", stringsAsFactors = TRUE)
+
+# Check data
+head(churn)
+str(churn)
+summary(churn)
+
+#PCA
+iris.pca.rawdata = prcomp(iris_ind, scale = FALSE, center = FALSE)
+#"center" means shifting data to 0 and "scale" means scaling to standard deviation by dividing by stdev.
+iris.pca.rawdata
+# we can refer to the Rotation matrix to see how PC 1-4 are constructed.(Just like a1x1 + a2x2 + a3x3 + a4x4 = PC1; it's all linear combination: all the numbers are coefficients of each PC)
+# we can have at most 4 PCs because there are only 4 columns in the dataset.
+
+summary(iris.pca.rawdata)
+# we can see that "Proportion of Variance" for PC1 is 96.53%, which explains a major chunk of the variance.
+
+#please note that you can get the Rotation Matrix (eigen vectors) as follows:
+iris.pca.rawdata$rotation
+
+```
+
+2. Get the transformed raw data.
+
+
+5. Check the correlations of the original, transformed and normalized transformed data.
+
+```{r}
+cor(iris_ind)
+#we can see that original data set has some great co-linearity (eg: width-length).
+cor(iris.pca.rawdata$x)
+#almost no corr, but not ideal enough - normalize the data
+cor(iris.pca.normdata$x)
+# corr is closer to zero than "rawdata"
+# Therefore, we can see that normalization is sometimes quite important in order to further reduce the corr between the PCs - esp for PCs that have different scales in values.
+
+```
+
